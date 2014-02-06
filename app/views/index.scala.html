@@ -1,0 +1,13 @@
+@(redirectOauth: String)
+
+@main("Oh-awth & Foursquare") {
+
+    <a href="@redirectOauth">Authenticate via Foursquare</a>
+    
+    @if(session().get("loggedIn") != null) {
+    	<a href="">Sign Out</a>
+    }
+    @if(session().get("loggedIn") == null) {
+    	<a href="@controllers.routes.Application.">Sign In</a>
+    }
+}

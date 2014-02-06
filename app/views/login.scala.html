@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Login - OhAwth:TwoPointOh</title>
+    </head>
+    <body>
+    <div class="container">
+		@helper.form(action = controllers.routes.Application.authenticate()) {
+			<h1>Sign in</h1>
+				<p>
+				<button type="submit">Login</button>
+				</p>
+		}
+	</div>
+    </body>
+</html>
