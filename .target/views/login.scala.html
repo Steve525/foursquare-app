@@ -1,3 +1,5 @@
+@(userForm: Form[controllers.Application.User])
+
 <html>
     <head>
         <title>Login - OhAwth:TwoPointOh</title>
@@ -6,10 +8,20 @@
     <div class="container">
 		@helper.form(action = controllers.routes.Application.authenticate()) {
 			<h1>Sign in</h1>
-				<p>
-				<button type="submit">Login</button>
+			@if(userForm.hasGlobalErrors) {
+				<p class="error">
+					@userForm.globalError.message
 				</p>
+			}
+			<p>
+			<input type="text" name="username" placeholder="Username" value="@userForm("username").value">
+			</p>
+			<p>
+			<button type="submit">Login</button>
+			</p>
 		}
+		<h3>Or</h3>
+		<a href="@controllers.routes.Application.index()">View Profiles</a>
 	</div>
     </body>
 </html>

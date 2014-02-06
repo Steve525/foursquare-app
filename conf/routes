@@ -3,9 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
-GET		/checkinInfo				controllers.Application.code()
-GET		/login						controllers.Application.authenticate()
+GET		/							controllers.Application.index()
+GET     /foursquareOAuth            controllers.Application.fouresquareOAuth()
+GET		/accessToken				controllers.Application.getAccessToken()
+GET		/signIn						controllers.Application.signIn()
+POST	/signIn						controllers.Application.authenticate()
+GET		/signOut					controllers.Application.signOut()
+GET		/users/:name				controllers.Application.displayUser(name: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

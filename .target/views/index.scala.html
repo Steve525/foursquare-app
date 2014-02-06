@@ -1,13 +1,22 @@
-@(redirectOauth: String)
+@(user: models.User, userList: List[models.User])
 
 @main("Oh-awth & Foursquare") {
-
-    <a href="@redirectOauth">Authenticate via Foursquare</a>
     
+    <div class="container">
     @if(session().get("loggedIn") != null) {
-    	<a href="">Sign Out</a>
+    	<a href="@controllers.routes.Application.signOut">Sign Out</a>
+    } else {
+    	<a href="@controllers.routes.Application.signIn">Sign In</a>
     }
-    @if(session().get("loggedIn") == null) {
-    	<a href="@controllers.routes.Application.">Sign In</a>
-    }
+    <br/>
+    <br/>
+	    <h3>Hello @user.name</h3>
+    </div>
+    
+    <h2>Users of this App</h2>
+    <ul>
+   		@for(u <- userList) {
+    		<li><a href="@controllers.routes.Application.displayUser(u.name)">@u.name</a></li>
+    	}
+    </ul>	
 }
